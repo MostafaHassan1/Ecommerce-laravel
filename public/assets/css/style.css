@@ -5305,6 +5305,20 @@ table.shop_attributes tbody{
     padding: 0;
     width: 100%;
 }
+.topbar-menu-area .topbar-menu .submenu li button {
+    font-weight: 300;
+    display: inline-block;
+    text-decoration: none;
+    color: #666666;
+    text-transform: capitalize;
+    border: none;
+    background:none;
+    text-align: left;
+    padding: 0;
+}
+.topbar-menu-area .topbar-menu .submenu li button:hover {
+    color: #ff2832;
+}
 .header-toggle .primary .submenu li:hover>a{
     color: #ffffff !important;
 }
