@@ -18,6 +18,7 @@ class isAdmin
     {
         if($request->user()->user_type == "admin")
             return $next($request);
-        else redirect('/') //should add flush message with unauthorized action 
+
+         return redirect()->back();//should add flush message with unauthorized action 
     }
 }

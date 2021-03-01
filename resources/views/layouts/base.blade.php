@@ -56,11 +56,14 @@
 									<a href="#">{{Auth::user()->name}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu curency" >
 										<li class="menu-item" >
-											<a href="#">Dashboard</a>
+											<a href="{{Auth::user()->user_type == "admin" ? route('admin.dashboard') : route('user.dashboard')}}">Dashboard</a>
 										</li>
 									
 										<li class="menu-item" >
-											<a href="{{route('logout')}}">Logout</a>
+											<form action="{{route('logout')}}" method="post">
+											@csrf
+											<button type="submit">Logout</button>
+											</form>
 										</li>
 									</ul>
 								</li>
