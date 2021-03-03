@@ -7166,9 +7166,12 @@ background-color: #888888;
 .btn-submitx:hover {
 	color: #ffffff !important;
 	background: #333333 !important;
-}
+}   
 .wrap-login-item .form-item.login-form {
 	padding-right: 40px;
 	margin-bottom: 65px;
 	padding-left: 40px;
+}
+.text-red-600{
+    color: red;
 }
