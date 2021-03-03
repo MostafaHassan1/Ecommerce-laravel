@@ -7175,3 +7175,15 @@ background-color: #888888;
 .text-red-600{
     color: red;
 }
+.disabled {
+    display: inline-block;
+    color: #333333;
+    font-size: 14px;
+    line-height: 34px;
+    background-color: #f5f5f5;
+    text-align: center;
+    min-width: 35px;
+    padding: 0 5px;
+    height: 35px;
+    border: 1px solid #e6e6e6;
+}

@@ -89,7 +89,7 @@
                         <li><a class="page-number-item next-link" href="#" >Next</a></li>
                     </ul>
                     <p class="result-count">Showing 1-8 of 12 result</p> --}}
-                    {{$products->links()}}
+                    {{$products->links('custom-views.custom-pagination')}}
                 </div>
             </div><!--end main products area-->
 
