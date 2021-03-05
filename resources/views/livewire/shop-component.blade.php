@@ -63,12 +63,12 @@
                         <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                             <div class="product product-style-3 equal-elem ">
                                 <div class="product-thumnail">
-                                    <a href="detail.html" title="{{$product->short_description}}">
+                                    <a href="{{route('products.details',$product->slug)}}" title="{{$product->short_description}}">
                                         <figure><img src=" {{ asset('assets/images/products/').'/'.$product->image }}" alt="{{$product->short_description}}"></figure>
                                     </a>
                                 </div>
                                 <div class="product-info">
-                                    <a href="#" class="product-name"><span>{{$product->name}}</span></a>
+                                    <a href="{{route('products.details',$product->slug)}}" class="product-name"><span>{{$product->name}}</span></a>
                                     <div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span></div>
                                     <a href="#" class="btn add-to-cart">Add To Cart</a>
                                 </div>
