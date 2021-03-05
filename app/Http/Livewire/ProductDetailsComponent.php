@@ -4,9 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use Livewire\Component;
+use App\Traits\shoppingcartTrait;
 
 class ProductDetailsComponent extends Component
-{
+{   
+    use shoppingcartTrait;
+    
     public $slug;
 
     public function mount($slug)
