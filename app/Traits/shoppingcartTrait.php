@@ -19,4 +19,30 @@ trait shoppingcartTrait
         session()->flash('success' , 'item was added successfuly');
         redirect('/cart');
     }
+    /**
+     * Increase the quantity of a cart item by 1
+     * @param $row_id The cart item row id
+     */
+    public function increaseQty($row_id)
+    {
+       $product = Cart::get($row_id);
+       $qty = $product->qty + 1;
+       Cart::update($row_id,$qty);
+       session()->flash('success','Item quantity has been increased successfully');
+    }
+
+    /**
+     * decrease the quantity of a cart item by 1
+     * @param $row_id The cart item row id
+     */
+    public function decreaseQty($row_id)
+    {
+       $product = Cart::get($row_id);
+       $qty = $product->qty - 1;
+       Cart::update($row_id,$qty);
+       if($qty == 0)
+           session()->flash('success','Item has been removed successfully');
+       else
+           session()->flash('success','Item quantity has been decreased successfully');
+    }
 }
