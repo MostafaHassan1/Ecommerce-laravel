@@ -33,6 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('/user')->name('user.')-
 });
 Route::get('/', HomeComponent::class);
 Route::get('/shop', ShopComponent::class);
+Route::get('/shop/categories/{slug}', ShopComponent::class)->name('shop.category');
 Route::get('/cart', CartComponent::class);
 Route::get('/checkout', CheckoutComponent::class);
 Route::get('/products/{slug}', ProductDetailsComponent::class)->name('products.details');

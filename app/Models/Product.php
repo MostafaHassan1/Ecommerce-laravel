@@ -18,4 +18,16 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    /**
+     * Gets the products tht belongs to a category
+     * @param Category $category , Can be null
+     */
+    public function scopeWithCategory($query,$category)
+    {
+        if($category) //checks if the category is not null
+            return $query->where('category_id',$category->id);
+        else 
+            return $query;
+    }
 }

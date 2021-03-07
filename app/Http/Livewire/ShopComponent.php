@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -12,11 +13,21 @@ class ShopComponent extends Component
 
     public $page_size = 12;
     public $sort_by = 'default';
+    public $category = NULL;
+
+    public function mount($slug = NULL)
+    {
+        if($slug)
+            $this->category = Category::whereSlug($slug)->first();   
+    }
 
     public function render()
     {
-        $products = $this->apply_sort_by($this->sort_by)->paginate($this->page_size); 
-        return view('livewire.shop-component', ['products' => $products])->layout('layouts.base');
+        $categories = Category::all();
+        $products = $this->apply_sort_by($this->sort_by)
+                         ->withCategory($this->category)
+                         ->paginate($this->page_size); 
+        return view('livewire.shop-component',compact('categories','products'))->layout('layouts.base');
     }
 
     public function apply_sort_by($sort)
@@ -40,4 +51,5 @@ class ShopComponent extends Component
                 break;
         }
     }
+
 }
