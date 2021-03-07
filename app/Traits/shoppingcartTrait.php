@@ -45,4 +45,10 @@ trait shoppingcartTrait
        else
            session()->flash('success','Item quantity has been decreased successfully');
     }
+
+    public function destroyAll()
+    {
+        Cart::destroy();
+        session()->flash('success','All items have been removed successfully');
+    }
 }
