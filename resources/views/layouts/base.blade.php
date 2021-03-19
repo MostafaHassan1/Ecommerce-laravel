@@ -59,6 +59,11 @@
 										<li class="menu-item" >
 											<a href="{{Auth::user()->user_type == "admin" ? route('admin.dashboard') : route('user.dashboard')}}">Dashboard</a>
 										</li>
+										@if (Auth::user()->user_type == "admin" )
+											<li class="menu-item" >
+												<a href="{{route('admin.categories')}}">categories</a>
+											</li>		
+										@endif
 									
 										<li class="menu-item" >
 											<form action="{{route('logout')}}" method="post">
