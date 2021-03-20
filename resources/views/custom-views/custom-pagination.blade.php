@@ -24,9 +24,9 @@
                     @if (is_array($element))
                         @foreach ($element as $page => $url)
                             @if ($page == $paginator->currentPage())
-                               <li> <a class="page-number-item current" wire:key="paginator-page-{{ $page }}" aria-current="page">{{ $page }}</a> </li>
+                               <li> <a class="page-number-item current" aria-current="page">{{ $page }}</a> </li>
                             @else
-                               <li> <a class="page-number-item" style="cursor: pointer" wire:key="paginator-page-{{ $page }}" wire:click="gotoPage({{ $page }})">{{ $page }}</a> </li>
+                               <li> <a class="page-number-item" style="cursor: pointer" wire:key="paginator-page-{{ $page }}" wire:click="gotoPage('{{ $page }}')">{{ $page }}</a> </li>
                             @endif
                         @endforeach
                     @endif
