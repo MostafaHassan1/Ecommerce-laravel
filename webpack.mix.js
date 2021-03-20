@@ -21,6 +21,7 @@ mix.js("resources/js/app.js", "public/js")
             "resources/js/owl.carousel.min.js",
             "resources/js/jquery.countdown.min.js",
             "resources/js/jquery.sticky.js",
+            "resources/js/yall.min.js",
             "resources/js/functions.js",
         ],
         "public/js/all.js"
