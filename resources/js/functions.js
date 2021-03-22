@@ -919,3 +919,5 @@
         MERCADO_JS.onResize();
     });
 })(window.Zepto || window.jQuery, window, document);
+
+document.addEventListener("DOMContentLoaded", yall);
