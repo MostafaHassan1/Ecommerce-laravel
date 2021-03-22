@@ -921,3 +921,4 @@
 })(window.Zepto || window.jQuery, window, document);
 
 document.addEventListener("DOMContentLoaded", yall);
+document.addEventListener("PaginationLoaded", yall);
