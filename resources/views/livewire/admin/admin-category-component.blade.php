@@ -14,8 +14,8 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-6">All Categories</div>
-                        <div class="col-md-6 pull-right">
-                            <a href="{{route('admin.categories.create')}}" class="btn btn-success">New Category</a>
+                        <div class="col-md-6 ">
+                            <a href="{{route('admin.categories.create')}}" class="btn btn-success pull-right">New Category</a>
                         </div>
                     </div>
                 </div>

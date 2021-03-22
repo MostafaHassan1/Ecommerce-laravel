@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Admin\AdminCategoryComponent;
+use App\Http\Livewire\Admin\AdminCreateCategoryComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CheckoutComponent;
@@ -29,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'verified','isAdmin'])->prefix('/admin')->name('admin.')->group(function () {
     Route::get('dashboard',AdminDashboardComponent::class)->name('dashboard');
     Route::get('categories',AdminCategoryComponent::class)->name('categories');
+    Route::get('categories/create',AdminCreateCategoryComponent::class)->name('categories.create');
     
 });
 
