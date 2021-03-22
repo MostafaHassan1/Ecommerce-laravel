@@ -1,18 +1,23 @@
-<style>
-    nav svg {
-        height: 20px;
-    }
-
-    nav .hidden {
-        display: block !important;
-    }
-</style>
 <div class="container" style="padding: 30px 0">
+    <style>
+        nav svg {
+            height: 20px;
+        }
+
+        nav .hidden {
+            display: block !important;
+        }
+    </style>
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    All Categories
+                    <div class="row">
+                        <div class="col-md-6">All Categories</div>
+                        <div class="col-md-6 pull-right">
+                            <a href="{{route('admin.categories.create')}}" class="btn btn-success">New Category</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped">
