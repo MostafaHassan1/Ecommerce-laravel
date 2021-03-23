@@ -80,6 +80,9 @@
 										<li class="menu-item">
 											<a href="{{route('admin.categories')}}">categories</a>
 										</li>
+										<li class="menu-item">
+											<a href="{{route('admin.products')}}">Products</a>
+										</li>
 										@endif
 
 										<li class="menu-item">
