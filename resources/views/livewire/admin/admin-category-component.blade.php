@@ -15,7 +15,8 @@
                     <div class="row">
                         <div class="col-md-6">All Categories</div>
                         <div class="col-md-6 ">
-                            <a href="{{route('admin.categories.create')}}" class="btn btn-success pull-right">New Category</a>
+                            <a href="{{route('admin.categories.create')}}" class="btn btn-success pull-right">New
+                                Category</a>
                         </div>
                     </div>
                 </div>
@@ -33,7 +34,9 @@
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->name}}</td>
                                 <td>{{$category->slug}}</td>
-                                <td></td>
+                                <td><a href="{{route('admin.categories.edit',$category->slug)}}">
+                                        <i class="fa fa-edit fa-2x "></i></a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
