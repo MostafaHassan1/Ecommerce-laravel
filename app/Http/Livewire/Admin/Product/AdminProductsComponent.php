@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Product;
 
 use App\Http\Livewire\PaginationComponent;
 use App\Models\Product;
@@ -11,7 +11,7 @@ class AdminProductsComponent extends PaginationComponent
     {
 
         return view(
-            'livewire.admin.admin-products-component',
+            'livewire.admin.product.admin-products-component',
             ['products' => Product::with('category:id,name')->paginate(6)]
         )->layout('layouts.base');
     }

@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Livewire\Admin\AdminCategoryComponent;
-use App\Http\Livewire\Admin\AdminCreateCategoryComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
-use App\Http\Livewire\Admin\AdminEditCategory;
-use App\Http\Livewire\Admin\AdminProductsComponent;
+use App\Http\Livewire\Admin\Category\AdminCategoryComponent;
+use App\Http\Livewire\Admin\Category\AdminCreateCategoryComponent;
+use App\Http\Livewire\Admin\Category\AdminEditCategory;
+use App\Http\Livewire\Admin\Product\AdminProductsComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\HomeComponent;
