@@ -11,8 +11,8 @@ class AdminCreateCategoryComponent extends Component
     public $name;
     public $slug;
 
-    protected $rules =[
-        'name' => 'required|min:3|string'
+    protected $rules = [
+        'name' => 'bail|required|min:3|string|unique:categories'
     ];
     public function generateSlug()
     {
@@ -22,13 +22,13 @@ class AdminCreateCategoryComponent extends Component
     public function createCategory()
     {
         $this->validate();
-        
+
         Category::create([
             'name' => $this->name,
             'slug' => $this->slug
         ]);
 
-        session()->flash('success','Category created successfuly');
+        session()->flash('success', 'Category created successfuly');
     }
 
     public function render()
