@@ -23,11 +23,16 @@ class Product extends Model
      * Gets the products tht belongs to a category
      * @param Category $category , Can be null
      */
-    public function scopeWithCategory($query,$category)
+    public function scopeWithCategory($query, $category)
     {
-        if($category) //checks if the category is not null
-            return $query->where('category_id',$category->id);
-        else 
+        if ($category) //checks if the category is not null
+            return $query->where('category_id', $category->id);
+        else
             return $query;
+    }
+
+    public function setImageAttribute($file)
+    {
+        $this->attributes['image'] = $file->store('products-images', 'public');
     }
 }
