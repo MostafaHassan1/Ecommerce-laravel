@@ -14,9 +14,6 @@ class AdminCreateProductComponent extends Component
     use WithFileUploads;
 
     public $product, $image;
-    // TODO adding file uploading
-    // TODO adding saving product logic
-    // TODO adding validation rules
     protected $rules = [
         'product.name' => 'required|min:3|max:255|string',
         'product.slug' => 'required',
