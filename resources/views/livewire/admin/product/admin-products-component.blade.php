@@ -21,6 +21,9 @@
                     </div>
                 </div>
                 <div class="panel-body">
+                    @if (Session::has('success'))
+                    <div class="alert alert-success">{{Session::get('success')}}</div>
+                    @endif
                     <table class="table table-striped">
                         <thead>
                             <th>Id</th>
@@ -46,6 +49,8 @@
                                 <td>
                                     <a href="{{route('admin.products.edit',$product->slug)}}">
                                         <i class="fa fa-edit fa-2x "></i></a>
+                                    <a href="#" wire:click.prevent="deleteProduct({{$product->id}})">
+                                        <i class="fa fa-times fa-2x text-danger"></i></a>
                                 </td>
                             </tr>
                             @endforeach
