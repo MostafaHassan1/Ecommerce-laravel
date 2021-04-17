@@ -20,4 +20,11 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function scopeHomeCategories($query)
+    {
+        return $query->limit(5)->inRandomOrder()->with(['products' => function($query2){
+            $query2->limit(10);
+        }]);
+    }
 }

@@ -31,7 +31,10 @@ class Product extends Model
         else
             return $query;
     }
-
+    
+    /**
+     * disable this function when seeding
+     */
     public function setImageAttribute($file)
     {
         if (!isset($this->attributes['image'])) //first time to create and upload an image
