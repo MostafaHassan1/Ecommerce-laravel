@@ -4,6 +4,7 @@ use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\Category\AdminCategoryComponent;
 use App\Http\Livewire\Admin\Category\AdminCreateCategoryComponent;
 use App\Http\Livewire\Admin\Category\AdminEditCategory;
+use App\Http\Livewire\Admin\HomeSlider\AdminHomeSliderComponent;
 use App\Http\Livewire\Admin\Product\AdminCreateProductComponent;
 use App\Http\Livewire\Admin\Product\AdminEditProductComponent;
 use App\Http\Livewire\Admin\Product\AdminProductsComponent;
@@ -39,6 +40,7 @@ Route::middleware(['auth:sanctum', 'verified', 'isAdmin'])->prefix('/admin')->na
     Route::get('products', AdminProductsComponent::class)->name('products');
     Route::get('products/create', AdminCreateProductComponent::class)->name('products.create');
     Route::get('products/{product:slug}/edit', AdminEditProductComponent::class)->name('products.edit');
+    Route::get('home-sliders', AdminHomeSliderComponent::class)->name('home-sliders');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('/user')->name('user.')->group(function () {
