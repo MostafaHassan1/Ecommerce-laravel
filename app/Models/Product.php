@@ -34,7 +34,7 @@ class Product extends Model
 
     public function setImageAttribute($file)
     {
-        if (!$this->attributes['image']) //first time to create and upload an image
+        if (!isset($this->attributes['image'])) //first time to create and upload an image
             $this->attributes['image'] = $file->store('products-images', 'public');
         else {
             Storage::disk('public')->delete($this->attributes['image']);
