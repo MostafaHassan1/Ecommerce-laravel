@@ -14,7 +14,10 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-6">All sliders</div>
-
+                        <div class="col-md-6">
+                            <a href="{{route('admin.home-sliders.create')}}" class="btn btn-success pull-right">
+                                New Home Slider</a>
+                        </div>
                     </div>
                 </div>
                 <div class="panel-body">
