@@ -13,7 +13,8 @@ class HomeComponent extends Component
     {
         $sliders =  HomeSlider::whereStatus('1')->get();
         $latest_products = Product::latest()->limit(10)->get();
+        $insale_products = Product::where('sale_price','>',0)->inRandomOrder()->limit(10)->get();
         $random_categories = Category::homeCategories()->get();
-        return view('livewire.home-component', compact('sliders', 'latest_products', 'random_categories'))->layout('layouts.base');
+        return view('livewire.home-component', compact('sliders', 'latest_products', 'random_categories','insale_products'))->layout('layouts.base');
     }
 }
