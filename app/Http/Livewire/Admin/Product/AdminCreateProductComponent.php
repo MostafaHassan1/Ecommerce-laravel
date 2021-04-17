@@ -26,6 +26,7 @@ class AdminCreateProductComponent extends Component
         'product.featured' => 'required|boolean',
         'product.quantity' => 'required|numeric|min:1',
         'product.category_id' => 'bail|required|integer|exists:categories,id',
+        'image' => 'required|image|max:1024', //1MB
     ];
     public function mount()
     {
@@ -44,17 +45,6 @@ class AdminCreateProductComponent extends Component
                 $this->addError('product.name', $error);
             }
         }
-    }
-    /**
-     * When an image is upladed this function is fired
-     * it validates the image and set the temprorary image path to the product
-     * and other direct way results in an error 
-     */
-    public function updatedImage()
-    {
-        $this->validate([
-            'image' => 'required|image|max:1024', //1MB
-        ]);
     }
 
     public function createProduct()

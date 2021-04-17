@@ -17,22 +17,12 @@ class AdminCreateHomeSliderComponent extends Component
         'homeSlider.price' => 'required|numeric|min:1',
         'homeSlider.status' => 'required|boolean',
         'homeSlider.link' => 'required|url',
+        'image' => 'required|image|max:1024', //1MB
     ];
     public function mount()
     {
         $this->homeSlider = new HomeSlider();
         $this->homeSlider->status = 0;
-    }
-    /**
-     * When an image is upladed this function is fired
-     * it validates the image and set the temprorary image path to the homeSlider
-     * and other direct way results in an error 
-     */
-    public function updatedImage()
-    {
-        $this->validate([
-            'image' => 'required|image|max:1024', //1MB
-        ]);
     }
 
     public function createHomeSlider()
