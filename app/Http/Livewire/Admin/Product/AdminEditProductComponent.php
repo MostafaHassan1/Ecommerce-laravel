@@ -65,7 +65,8 @@ class AdminEditProductComponent extends Component
     {
         $this->validate();
 
-        $this->product->image = $this->image;
+        if ($this->image)
+            $this->product->image = $this->image;
         $this->product->slug = $this->slug;
         $this->product->save();
 
