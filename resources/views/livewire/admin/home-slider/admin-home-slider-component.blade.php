@@ -32,6 +32,7 @@
                             <th>Subtitle</th>
                             <th>Price</th>
                             <th>Status</th>
+                            <th>Date</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
@@ -43,9 +44,11 @@
                                 <td>{{$slider->title}}</td>
                                 <td>{{$slider->subtitle}}</td>
                                 <td>{{$slider->price}}</td>
-                                <td>{{$slider->status}}</td>
+                                <td>{{$slider->status ? "Active" : "Inactive"}}</td>
                                 <td>{{$slider->created_at}}</td>
                                 <td>
+                                    <a href="{{route('admin.home-sliders.edit',$slider->id)}}">
+                                        <i class="fa fa-edit fa-2x "></i></a>
                                 </td>
                             </tr>
                             @endforeach
