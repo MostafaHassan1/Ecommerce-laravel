@@ -84,7 +84,10 @@
 											<a href="{{route('admin.products')}}">Products</a>
 										</li>
 										<li class="menu-item">
-											<a href="{{route('admin.home-sliders')}}">HomeSliders</a>
+											<a href="{{route('admin.home-sliders')}}">Home Sliders</a>
+										</li>
+										<li class="menu-item">
+											<a href="{{route('admin.sale-management')}}">Sale Management</a>
 										</li>
 										@endif
 
@@ -496,6 +499,8 @@
 
 	@livewireScripts
 	<script src="{{ mix('/js/all.js') }}"></script>
+
+	@stack('scripts')
 </body>
 
 </html>

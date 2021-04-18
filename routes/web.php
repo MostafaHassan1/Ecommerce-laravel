@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\Admin\AdminSaleManagementComponent;
 use App\Http\Livewire\Admin\Category\AdminCategoryComponent;
 use App\Http\Livewire\Admin\Category\AdminCreateCategoryComponent;
 use App\Http\Livewire\Admin\Category\AdminEditCategory;
@@ -45,6 +46,7 @@ Route::middleware(['auth:sanctum', 'verified', 'isAdmin'])->prefix('/admin')->na
     Route::get('home-sliders', AdminHomeSliderComponent::class)->name('home-sliders');
     Route::get('home-sliders/create', AdminCreateHomeSliderComponent::class)->name('home-sliders.create');
     Route::get('home-sliders/{homeSlider}/edit', AdminEditHomeSliderComponent::class)->name('home-sliders.edit');
+    Route::get('sale-management', AdminSaleManagementComponent::class)->name('sale-management');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('/user')->name('user.')->group(function () {
