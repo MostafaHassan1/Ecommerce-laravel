@@ -1,6 +1,5 @@
 <div id="main" class="main-site left-sidebar">
     <div class="container">
-
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="/" class="link">home</a></li>
@@ -68,8 +67,7 @@
                                 <div class="product-thumnail">
                                     <a href="{{route('products.details',$product->slug)}}"
                                         title="{{$product->short_description}}">
-                                        <figure><img class="lazy"
-                                                data-src=" {{ asset('assets/images/products/').'/'.$product->image }}"
+                                        <figure><img src=" {{ asset('storage').'/'.$product->image }}"
                                                 alt="{{$product->short_description}}"></figure>
                                     </a>
                                 </div>
@@ -148,12 +146,15 @@
 
                 <div class="widget mercado-widget filter-widget price-filter">
                     <h2 class="widget-title">Price</h2>
-                    <div class="widget-content">
-                        <div id="slider-range"></div>
+                    <div class="widget-content" wire:ignore>
+                        <div id="slider-range2"></div>
                         <p>
-                            <label for="amount">Price:</label>
-                            <input type="text" id="amount" readonly>
-                            <button class="filter-submit">Filter</button>
+                            <label for="range">Price: $</label>
+                            <input type="text" id="range_1" readonly style="padding: 0; margin: 0" size="2">
+                            To
+                            <input type="text" id="range_2" readonly size="2">
+                            <button class="filter-submit"
+                                wire:click="$emit('price_filter')"><strong>Filter</strong></button>
                         </p>
                     </div>
                 </div><!-- Price-->
@@ -277,4 +278,40 @@
 
     </div>
     <!--end container-->
+    @push('scripts')
+
+    <script>
+        var fun = function () {
+            if ($("#slider-range2").length > 0) {
+                $("#slider-range2").slider({
+                    range: true,
+                    min: 0,
+                    max: 1000,
+                    values: [1, 1000],
+                    slide: function (event, ui) {
+                        $("#range_1").val(
+                            ui.values[0]
+                            );
+                        $("#range_2").val(
+                            ui.values[1]
+                            );
+                    },
+                });
+                $("#range_1").val(
+                        $("#slider-range2").slider("values", 0) 
+                );
+                $("#range_2").val(
+                        $("#slider-range2").slider("values", 1) 
+                );
+            }
+        }
+        fun();
+        Livewire.on('price_filter',() => {
+            @this.set('range_1' ,$("#range_1").val());
+            @this.set('range_2' ,$("#range_2").val());
+        
+        });
+
+    </script>
+    @endpush
 </div>
