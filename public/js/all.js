@@ -2478,5 +2478,13 @@ var yall=function(){"use strict";return function(e){var n=(e=e||{}).lazyClass||"
     });
 })(window.Zepto || window.jQuery, window, document);
 
-document.addEventListener("DOMContentLoaded", yall);
-document.addEventListener("PaginationLoaded", yall);
+document.addEventListener("DOMContentLoaded", function () {
+    yall({
+        observeChanges: true,
+    });
+});
+document.addEventListener("PaginationLoaded", function () {
+    yall({
+        observeChanges: true,
+    });
+});

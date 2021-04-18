@@ -67,7 +67,7 @@
                                 <div class="product-thumnail">
                                     <a href="{{route('products.details',$product->slug)}}"
                                         title="{{$product->short_description}}">
-                                        <figure><img src=" {{ asset('storage').'/'.$product->image }}"
+                                        <figure><img class="lazy" data-src=" {{ asset('storage').'/'.$product->image }}"
                                                 alt="{{$product->short_description}}"></figure>
                                     </a>
                                 </div>
@@ -309,7 +309,6 @@
         Livewire.on('price_filter',() => {
             @this.set('range_1' ,$("#range_1").val());
             @this.set('range_2' ,$("#range_2").val());
-        
         });
 
     </script>
