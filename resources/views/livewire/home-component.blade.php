@@ -37,9 +37,13 @@
         </div>
 
         <!--On Sale-->
+        @if ($insale_products->count() > 0 && $sale != null && $sale->status == 1
+        && $sale->sale_date > Carbon\Carbon::now())
+
         <div class="wrap-show-advance-info-box style-1 has-countdown">
             <h3 class="title-box">On Sale</h3>
-            <div class="wrap-countdown mercado-countdown" data-expire="2021/12/12 12:34:56"></div>
+            <div class="wrap-countdown mercado-countdown"
+                data-expire="{{Carbon\Carbon::parse($sale->sale_date)->format('Y/m/d H:i:s')}}"></div>
             <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5"
                 data-loop="false" data-nav="true" data-dots="false"
                 data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
@@ -65,6 +69,7 @@
             </div>
         </div>
 
+        @endif
         <!--Latest Products-->
         <div class="wrap-show-advance-info-box style-1">
             <h3 class="title-box">Latest Products</h3>
