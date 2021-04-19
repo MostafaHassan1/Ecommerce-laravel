@@ -1,4 +1,29 @@
 <div id="main" class="main-site left-sidebar">
+    <style>
+        .product-wish {
+            position: absolute;
+            top: 10%;
+            left: 0;
+            z-index: 99;
+            right: 30px;
+            text-align: right;
+            padding-top: 0;
+        }
+
+        .product-wish .fa {
+            color: gray;
+            font-size: 32px;
+
+        }
+
+        .product-wish .fa:hover {
+            color: red;
+        }
+
+        .product-wish .fill-heart {
+            color: red;
+        }
+    </style>
     <div class="container">
         <div class="wrap-breadcrumb">
             <ul>
@@ -77,8 +102,18 @@
                                     <div class="wrap-price"><span
                                             class="product-price">{{$product->regular_price}}</span></div>
                                     <a href="#" class="btn add-to-cart"
-                                        wire:click.prevent="store({{$product->id}},'{{$product->name}}',1,{{$product->regular_price}})">Add
+                                        wire:click.prevent="store({{$product->id}},'{{$product->name}}',1,{{$product->regular_price}},'cart')">Add
                                         To Cart</a>
+                                    <div class="product-wish">
+                                        @if (Cart::instance('wishlist')->content()->pluck('id')->contains($product->id))
+                                        <a href="#">
+                                            <i class="fa fa-heart fill-heart" aria-hidden="true"></i></a>
+                                        @else
+                                        <a href="#"
+                                            wire:click.prevent="store({{$product->id}},'{{$product->name}}',1,{{$product->regular_price}},'wishlist')">
+                                            <i class="fa fa-heart" aria-hidden="true"></i></a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -90,13 +125,6 @@
                 </div>
 
                 <div class="wrap-pagination-info">
-                    {{-- <ul class="page-numbers">
-                            <li><span class="page-number-item current" >1</span></li>
-                            <li><a class="page-number-item" href="#" >2</a></li>
-                            <li><a class="page-number-item" href="#" >3</a></li>
-                            <li><a class="page-number-item next-link" href="#" >Next</a></li>
-                        </ul>
-                        <p class="result-count">Showing 1-8 of 12 result</p> --}}
                     {{$products->links('custom-views.custom-pagination')}}
                 </div>
             </div>

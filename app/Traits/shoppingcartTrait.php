@@ -13,11 +13,10 @@ trait shoppingcartTrait
      * @param $quantity
      * @param $price
      */
-    public function store($product_id,$product_name,$quantity, $price)
+    public function store($product_id,$product_name,$quantity, $price, $cart_instance)
     {
-        Cart::add($product_id,$product_name,$quantity,$price)->associate('App\Models\Product');
-        session()->flash('success' , 'item was added successfuly');
-        redirect('/cart');
+        Cart::instance($cart_instance)->add($product_id,$product_name,$quantity,$price)->associate('App\Models\Product');
+        session()->flash('success' , 'item was added to '. $cart_instance.' successfuly');
     }
     /**
      * Increase the quantity of a cart item by 1
@@ -25,9 +24,9 @@ trait shoppingcartTrait
      */
     public function increaseQty($row_id)
     {
-       $product = Cart::get($row_id);
+       $product = Cart::instance('cart')->get($row_id);
        $qty = $product->qty + 1;
-       Cart::update($row_id,$qty);
+       Cart::instance('cart')->update($row_id,$qty);
        session()->flash('success','Item quantity has been increased successfully');
     }
 
@@ -37,9 +36,9 @@ trait shoppingcartTrait
      */
     public function decreaseQty($row_id)
     {
-       $product = Cart::get($row_id);
+       $product = Cart::instance('cart')->get($row_id);
        $qty = $product->qty - 1;
-       Cart::update($row_id,$qty);
+       Cart::instance('cart')->update($row_id,$qty);
        if($qty == 0)
            session()->flash('success','Item has been removed successfully');
        else
@@ -48,7 +47,7 @@ trait shoppingcartTrait
 
     public function destroyAll()
     {
-        Cart::destroy();
+        Cart::instance('cart')->destroy();
         session()->flash('success','All items have been removed successfully');
     }
 }
