@@ -35,22 +35,23 @@
                                     placeholder="Product Slug" wire:model="product.slug">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" wire:ignore>
                             <label class="control-label col-md-4" for="short_description">Short Description</label>
                             <div class="col-md-4">
-                                <textarea class="form-control" placeholder="Product short description"
+                                <textarea class="form-control" id="short_description"
+                                    placeholder="Product short description"
                                     wire:model="product.short_description"></textarea>
                                 @error('product.short_description')
                                 <div class="alert alert-danger">{{$message}}</div>
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" wire:ignore>
                             <label class="control-label col-md-4" for="description">Description</label>
                             <div class="col-md-4">
-                                <textarea class="form-control" placeholder="Product description"
+                                <textarea class="form-control" id="description" placeholder="Product description"
                                     wire:model="product.description"> </textarea>
-                                @error('product.short_description')
+                                @error('product.description')
                                 <div class="alert alert-danger">{{$message}}</div>
                                 @enderror
                             </div>
@@ -157,4 +158,33 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+    <script src='https://cdn.tiny.cloud/1/du40eeqbkkfb5cpsdxvi8cminuwjn7brwkbfa2gf0n2hjos5/tinymce/5/tinymce.min.js'
+        referrerpolicy="origin">
+    </script>
+    <script>
+        $(function() {
+            console.log("hello")
+            tinymce.init({
+              selector: '#short_description',
+              setup: function (editor) {
+                  editor.on('change',function (e) {
+                      tinyMCE.triggerSave();
+                      @this.set('product.short_description',$('#short_description').val());
+                  })
+              }
+            });
+            tinymce.init({
+              selector: '#description',
+              setup: function (editor) {
+                  editor.on('change',function (e) {
+                      tinyMCE.triggerSave();
+                      @this.set('product.description',$('#description').val());
+                  })
+              }
+            });
+            
+        });
+    </script>
+    @endpush
 </div>
