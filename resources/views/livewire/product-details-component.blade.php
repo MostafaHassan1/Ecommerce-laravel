@@ -54,7 +54,8 @@
                         <div class="quantity">
                             <span>Quantity:</span>
                             <div class="quantity-input">
-                                <input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*">
+                                <input type="text" id="qty" name="product-quatity" value="1" data-max="120"
+                                    pattern="[0-9]*">
 
                                 <a class="btn btn-reduce" href="#"></a>
                                 <a class="btn btn-increase" href="#"></a>
@@ -63,17 +64,19 @@
                         <div class="wrap-butons">
                             @if ($product->sale_price > 0 && $sale != null && $sale->status == 1
                             && $sale->sale_date > Carbon\Carbon::now())
-                            <a href="#" class="btn add-to-cart"
-                                wire:click.prevent="store({{$product->id}},'{{$product->name}}',1,{{$product->sale_price}})">Add
+                            <a href="#" class="btn add-to-cart" onclick="changeQty()"
+                                wire:click.prevent="passToCartStore({{$product->id}},'{{$product->name}}',{{$product->sale_price}})">Add
                                 to Cart</a>
                             @else
-                            <a href="#" class="btn add-to-cart"
-                                wire:click.prevent="store({{$product->id}},'{{$product->name}}',1,{{$product->regular_price}})">Add
+                            <a href="#" class="btn add-to-cart" onclick="changeQty()"
+                                wire:click.prevent="passToCartStore({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add
                                 to Cart</a>
                             @endif
                             <div class="wrap-btn">
                                 <a href="#" class="btn btn-compare">Add Compare</a>
-                                <a href="#" class="btn btn-wishlist">Add Wishlist</a>
+                                <a class="btn btn-wishlist" id="wishbtn" onclick="changeText()"
+                                    wire:click.prevent="$emitTo('cart-header-component','toggleWishlist',{{$product->id}},'{{$product->name}}',1,{{$product->regular_price}})">
+                                    {{Cart::instance('wishlist')->content()->where('id', $product->id)->count() > 0 ? " Remove Wishlist" : " Add to Wishlist"}}</a>
                             </div>
                         </div>
                     </div>
@@ -317,5 +320,18 @@
 
     </div>
     <!--end container-->
-
+    @push('scripts')
+    <script>
+        function changeQty(){
+            @this.set('qty',document.getElementById('qty').value);
+        }
+        function changeText() {
+           var word = document.getElementById('wishbtn').innerText;
+           if(word ==" Add To Wishlist")
+                document.getElementById('wishbtn').innerText=" Remove Wishlist"
+           else 
+                document.getElementById('wishbtn').innerText=" Add to Wishlist"
+        }
+    </script>
+    @endpush
 </main>

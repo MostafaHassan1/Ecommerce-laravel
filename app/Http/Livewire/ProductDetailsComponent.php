@@ -12,12 +12,17 @@ class ProductDetailsComponent extends Component
     use shoppingcartTrait;
 
     public $slug;
-
+    public $qty;
     public function mount($slug)
     {
         $this->slug = $slug;
+        $this->qty = 1;
     }
 
+    public function passToCartStore($product_id, $product_name, $product_price)
+    {
+        $this->store($product_id, $product_name, $this->qty, $product_price, 'cart');
+    }
     public function render()
     {
         $product = Product::whereSlug($this->slug)->first();
