@@ -4,12 +4,9 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Product;
-use App\Traits\shoppingcartTrait;
 
 class ShopComponent extends PaginationComponent
 {
-    use shoppingcartTrait;
-
     public $page_size = 12;
     public $sort_by = 'default';
     public $category = NULL;

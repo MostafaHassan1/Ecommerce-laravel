@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Traits\shoppingcartTrait;
 use Livewire\Component;
 
 class CartHeaderComponent extends Component
 {
-    protected $listeners = ['refreshComponent' => '$refresh'];
+    use shoppingcartTrait;
+    protected $listeners = ['refreshComponent' => '$refresh', 'store' => 'store'];
     public function render()
     {
         return view('livewire.cart-header-component');
