@@ -57,4 +57,15 @@ trait shoppingcartTrait
         session()->flash('success', 'All items have been removed successfully');
         $this->emitTo('cart-header-component', 'refreshComponent');
     }
+    public function removeItem($item_id, $cart_instance)
+    {
+        foreach (Cart::instance($cart_instance)->content() as $cart_item) {
+            if ($cart_item->id == $item_id) {
+                Cart::instance($cart_instance)->remove($cart_item->rowId);
+                session()->flash('success', 'item was removed from ' . $cart_instance . ' successfuly');
+                $this->emitTo('cart-header-component', 'refreshComponent');
+                break;
+            }
+        }
+    }
 }

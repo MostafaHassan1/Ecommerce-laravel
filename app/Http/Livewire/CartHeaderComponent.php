@@ -8,7 +8,11 @@ use Livewire\Component;
 class CartHeaderComponent extends Component
 {
     use shoppingcartTrait;
-    protected $listeners = ['refreshComponent' => '$refresh', 'store' => 'store'];
+    protected $listeners = [
+        'refreshComponent' => '$refresh',
+        'store' => 'store',
+        'removeItem' => 'removeItem',
+    ];
     public function render()
     {
         return view('livewire.cart-header-component');

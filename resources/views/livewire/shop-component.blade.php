@@ -102,16 +102,21 @@
                                     <div class="wrap-price"><span
                                             class="product-price">{{$product->regular_price}}</span></div>
                                     <a href="#" class="btn add-to-cart"
-                                        wire:click.prevent="store({{$product->id}},'{{$product->name}}',1,{{$product->regular_price}},'cart')">Add
+                                        wire:click.prevent="$emitTo('cart-header-component','store',{{$product->id}},'{{$product->name}}',1,{{$product->regular_price}},'cart')">Add
                                         To Cart</a>
                                     <div class="product-wish">
                                         @if (Cart::instance('wishlist')->content()->pluck('id')->contains($product->id))
-                                        <a href="#">
-                                            <i class="fa fa-heart fill-heart" aria-hidden="true"></i></a>
+                                        <a href="#"
+                                            onclick="document.getElementById('heart-{{$product->id}}').classList.remove('fill-heart');"
+                                            wire:click.prevent="$emitTo('cart-header-component','removeItem',{{$product->id}},'wishlist')">
+                                            <i class="fa fa-heart fill-heart" id="heart-{{$product->id}}"
+                                                aria-hidden="true"></i></a>
                                         @else
                                         <a href="#"
-                                            wire:click.prevent="store({{$product->id}},'{{$product->name}}',1,{{$product->regular_price}},'wishlist')">
-                                            <i class="fa fa-heart" aria-hidden="true"></i></a>
+                                            onclick="document.getElementById('heart-{{$product->id}}').classList.add('fill-heart');"
+                                            wire:click.prevent="$emitTo('cart-header-component','store',{{$product->id}},'{{$product->name}}',1,{{$product->regular_price}},'wishlist')">
+                                            <i class="fa fa-heart" id="heart-{{$product->id}}"
+                                                aria-hidden="true"></i></a>
                                         @endif
                                     </div>
                                 </div>
