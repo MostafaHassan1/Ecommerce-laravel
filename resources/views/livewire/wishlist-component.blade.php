@@ -46,7 +46,8 @@
                             <div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span>
                             </div>
                             <a href="#" class="btn add-to-cart"
-                                wire:click.prevent="$emitTo('cart-header-component','store',{{$product->id}},'{{$product->name}}',1,{{$product->regular_price}},'cart')">Add
+                                onclick="document.getElementById('{{$product->id}}').remove();"
+                                wire:click.prevent="$emitTo('cart-header-component','moveToCart',{{$product->id}},'{{$product->name}}',1,{{$product->regular_price}},'cart')">Add
                                 To Cart</a>
                             <div class="product-wish">
                                 <a href="#" onclick="document.getElementById('{{$product->id}}').remove();"

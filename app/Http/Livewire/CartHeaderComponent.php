@@ -13,6 +13,7 @@ class CartHeaderComponent extends Component
         'store' => 'store',
         'removeItem' => 'removeItem',
         'toggleWishlist' => 'toggleWishlist',
+        'moveToCart' => 'moveToCart',
     ];
     public function render()
     {

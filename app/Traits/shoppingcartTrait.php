@@ -90,4 +90,16 @@ trait shoppingcartTrait
         }
         $this->emitTo('cart-header-component', 'refreshComponent');
     }
+
+    /**
+     * Removes a product from the wishlist and add it to the cart
+     * simply triggers the store and toggle functions 
+     */
+    public function moveToCart($product_id, $product_name, $quantity, $price, $cart_instance)
+    {
+        $this->store($product_id, $product_name, $quantity, $price, $cart_instance);
+        $this->toggleWishlist($product_id, $product_name, $quantity, $price);
+        session()->flash('success', 'item was Moved to ' . $cart_instance . ' successfuly');
+        $this->emitTo('cart-header-component', 'refreshComponent');
+    }
 }
