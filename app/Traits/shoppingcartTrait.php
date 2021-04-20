@@ -68,4 +68,26 @@ trait shoppingcartTrait
             }
         }
     }
+    /**
+     * This function search the wishlist cart for an item
+     * if it's in the cart remove it
+     * if not then add it (Toggle)
+     */
+    public function toggleWishlist($product_id, $product_name, $quantity, $price)
+    {
+        $flag = false;
+        foreach (Cart::instance('wishlist')->content() as $cart_item) {
+            if ($cart_item->id == $product_id) {
+                Cart::instance('wishlist')->remove($cart_item->rowId);
+                session()->flash('success', 'item was removed from wishlist successfuly');
+                $flag = true;
+                break;
+            }
+        }
+        if (!$flag) {
+            Cart::instance('wishlist')->add($product_id, $product_name, $quantity, $price)->associate('App\Models\Product');
+            session()->flash('success', 'item was added to wishlist successfuly');
+        }
+        $this->emitTo('cart-header-component', 'refreshComponent');
+    }
 }

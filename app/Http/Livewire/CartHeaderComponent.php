@@ -12,6 +12,7 @@ class CartHeaderComponent extends Component
         'refreshComponent' => '$refresh',
         'store' => 'store',
         'removeItem' => 'removeItem',
+        'toggleWishlist' => 'toggleWishlist',
     ];
     public function render()
     {

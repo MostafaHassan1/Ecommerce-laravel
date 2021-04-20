@@ -107,14 +107,14 @@
                                     <div class="product-wish">
                                         @if (Cart::instance('wishlist')->content()->pluck('id')->contains($product->id))
                                         <a href="#"
-                                            onclick="document.getElementById('heart-{{$product->id}}').classList.remove('fill-heart');"
-                                            wire:click.prevent="$emitTo('cart-header-component','removeItem',{{$product->id}},'wishlist')">
+                                            onclick="document.getElementById('heart-{{$product->id}}').classList.toggle('fill-heart');"
+                                            wire:click.prevent="$emitTo('cart-header-component','toggleWishlist',{{$product->id}},'{{$product->name}}',1,{{$product->regular_price}})">
                                             <i class="fa fa-heart fill-heart" id="heart-{{$product->id}}"
                                                 aria-hidden="true"></i></a>
                                         @else
                                         <a href="#"
-                                            onclick="document.getElementById('heart-{{$product->id}}').classList.add('fill-heart');"
-                                            wire:click.prevent="$emitTo('cart-header-component','store',{{$product->id}},'{{$product->name}}',1,{{$product->regular_price}},'wishlist')">
+                                            onclick="document.getElementById('heart-{{$product->id}}').classList.toggle('fill-heart');"
+                                            wire:click.prevent="$emitTo('cart-header-component','toggleWishlist',{{$product->id}},'{{$product->name}}',1,{{$product->regular_price}})">
                                             <i class="fa fa-heart" id="heart-{{$product->id}}"
                                                 aria-hidden="true"></i></a>
                                         @endif
