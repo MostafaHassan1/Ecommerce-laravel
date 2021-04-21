@@ -89,6 +89,9 @@
 										<li class="menu-item">
 											<a href="{{route('admin.sale-management')}}">Sale Management</a>
 										</li>
+										<li class="menu-item">
+											<a href="{{route('admin.coupons')}}">Coupons</a>
+										</li>
 										@endif
 
 										<li class="menu-item">
